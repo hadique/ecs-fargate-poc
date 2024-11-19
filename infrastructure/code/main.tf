@@ -69,6 +69,7 @@ module "alb" {
 
 # Create ecs cluster, service and task definition
 module "ecs" {
+  dd_key = var.dd_key
   source                          = "./modules/ecs"
   region                          = var.region
   project_name                    = var.project_name

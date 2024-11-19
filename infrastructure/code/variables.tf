@@ -86,3 +86,8 @@ variable "image_tag" {
   type        = string
   default     = "latest"
 }
+
+variable "dd_key" {
+  description = "This is the datadog API key."
+  type = string
+}

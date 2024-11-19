@@ -55,7 +55,7 @@ resource "aws_ecs_task_definition" "this" {
         "entryPoint" : [],
         "essential" : false,
 	"environment" : [
-	  {"name": "DD_API_KEY", "value": "2003f8b9dea39f4238d313646aa37a4a"},
+	  {"name": "DD_API_KEY", "value": "${var.dd_key}"},
 	  {"name": "DD_ENV", "value": "fargate"},
 	  {"name": "DD_SERVICE", "value": "blurryface"},
 	  {"name": "DD_SITE", "value": "datadoghq.com"},

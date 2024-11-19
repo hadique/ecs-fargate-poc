@@ -8,3 +8,4 @@ variable "load_balancer_security_group_id" {}
 variable "target_group_arn" {}
 variable "image_path" {}
 variable "image_tag" {}
+variable "dd_key" {}
