@@ -1,9 +1,9 @@
 terraform {
   backend "s3" {
-    bucket         = "terraform-state-123456789012-eu-west-2"
+    bucket         = "sampleapp-fargate2"
     key            = "sample-app/terraform.tfstate"
-    region         = "eu-west-2"
-    dynamodb_table = "terraform-state-lock"
+    region         = "us-east-1"
+    dynamodb_table = "lock_table"
     encrypt        = true
   }
 }

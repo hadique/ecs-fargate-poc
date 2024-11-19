@@ -87,10 +87,10 @@ resource "aws_lb_target_group" "this" {
     healthy_threshold   = "3"
     unhealthy_threshold = "3"
     port                = "3000"
-    interval            = "10"
+    interval            = "20"
     protocol            = "HTTP"
     matcher             = "200"
-    timeout             = "5"
+    timeout             = "10"
     path                = "/"
   }
 

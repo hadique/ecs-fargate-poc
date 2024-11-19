@@ -26,6 +26,11 @@ resource "aws_ecs_task_definition" "this" {
         "image" : "${var.image_path}:${var.image_tag}",
         "entryPoint" : [],
         "essential" : true,
+	"environment" : [
+	  {"name": "DD_ENV", "value": "fargate"},
+	  {"name": "DD_SERVICE", "value": "blurryface"},
+	  {"name": "DD_VERSION", "value": "187"},
+	],
         "logConfiguration" : {
           "logDriver" : "awslogs",
           "options" : {
@@ -43,13 +48,39 @@ resource "aws_ecs_task_definition" "this" {
         "cpu" : 512,
         "memory" : 1024,
         "networkMode" : "awsvpc"
+      },
+      {
+        "name" : "datadog-agent",
+        "image" : "public.ecr.aws/datadog/agent:latest",
+        "entryPoint" : [],
+        "essential" : false,
+	"environment" : [
+	  {"name": "DD_API_KEY", "value": "2003f8b9dea39f4238d313646aa37a4a"},
+	  {"name": "DD_ENV", "value": "fargate"},
+	  {"name": "DD_SERVICE", "value": "blurryface"},
+	  {"name": "DD_SITE", "value": "datadoghq.com"},
+	  {"name": "DD_VERSION", "value": "187"},
+	  {"name": "ECS_FARGATE", "value": "true"}
+	],
+        "logConfiguration" : {
+          "logDriver" : "awslogs",
+          "options" : {
+            "awslogs-group" : "${aws_cloudwatch_log_group.this.id}",
+            "awslogs-region" : "${var.region}",
+            "awslogs-stream-prefix" : "${var.project_name}-sample-app"
+          }
+        },
+        "cpu" : 512,
+        "memory" : 1024,
+        "networkMode" : "awsvpc",
       }
   ])
 
+  pid_mode = "task"
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
-  cpu                      = "512"
-  memory                   = "1024"
+  cpu                      = "1024"
+  memory                   = "2048"
   execution_role_arn       = var.ecs_task_execution_role_arn
 
   tags = {
