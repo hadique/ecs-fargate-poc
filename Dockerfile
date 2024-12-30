@@ -1,13 +1,14 @@
 # Use the official Node.js image as the base
 
-FROM node:18.16-alpine3.17
+#FROM node:18.16-alpine3.17
+FROM node:20.18-alpine3.20
 
 # Set the working directory in the container
 
-LABEL "com.datadoghq.tags.env": "fargate"
-LABEL "com.datadoghq.tags.service": "blurryface",
-LABEL "com.datadoghq.tags.version": "1.0.0",
-LABEL "com.docker.service.name": "fargate-python"
+LABEL "com.datadoghq.tags.env"="fargate"
+LABEL "com.datadoghq.tags.service"="blurryface",
+LABEL "com.datadoghq.tags.version"="1.1.0",
+# LABEL "com.docker.service.name"="fargate-python"
 
 
 WORKDIR /home/sample-app

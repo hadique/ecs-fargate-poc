@@ -29,7 +29,7 @@ resource "aws_ecs_task_definition" "this" {
 	"environment" : [
 	  {"name": "DD_ENV", "value": "fargate"},
 	  {"name": "DD_SERVICE", "value": "blurryface"},
-	  {"name": "DD_VERSION", "value": "187"},
+	  {"name": "DD_VERSION", "value": "s187"},
 	],
         "logConfiguration" : {
           "logDriver" : "awslogs",
@@ -59,7 +59,7 @@ resource "aws_ecs_task_definition" "this" {
 	  {"name": "DD_ENV", "value": "fargate"},
 	  {"name": "DD_SERVICE", "value": "blurryface"},
 	  {"name": "DD_SITE", "value": "datadoghq.com"},
-	  {"name": "DD_VERSION", "value": "187"},
+	  {"name": "DD_VERSION", "value": "188"},
 	  {"name": "ECS_FARGATE", "value": "true"}
 	],
         "logConfiguration" : {
