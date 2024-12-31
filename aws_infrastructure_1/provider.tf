@@ -6,6 +6,7 @@ provider "aws" {
     tags = {
       env = "fargate"
       service  = "blurryface"
+      terraform = "true"
     }
   }
 }
